@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# From: https://github.com/alrra/dotfiles/blob/master/shell/bashrc
+
+[ -n "$PS1" ] \
+    && source ~/.bash_profile

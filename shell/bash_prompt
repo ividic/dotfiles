@@ -1,0 +1,132 @@
+#!/bin/bash
+
+# Inspiration: https://github.com/alrra/dotfiles/blob/master/shell/bash_prompt
+
+source "$(dirname $(readlink $BASH_SOURCE))/utils/utils.sh"
+
+enable_color_support() {
+
+    declare OS="$(get_os)"
+
+    if [ "$OS" == 'osx' ]; then
+        alias ls='ls -G' # or CLICOLOR=1
+    elif [ "$OS" == 'ubuntu' ]; then
+        if [ -x /usr/bin/dircolors ]; then
+
+            test -r ~/.dircolors \
+                && eval "$(dircolors -b ~/.dircolors)" \
+                || eval "$(dircolors -b)"
+
+            alias dir='dir --color=auto'
+            alias egrep='egrep --color=auto'
+            alias fgrep='fgrep --color=auto'
+            alias grep='grep --color=auto'
+            alias ls='ls --color=auto'
+            alias vdir='vdir --color=auto'
+
+        fi
+    fi
+
+}
+
+set_ls_colors() {
+
+    declare OS="$(get_os)"
+
+    export CLICOLOR=1
+
+    # OSX Colours
+    # http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
+    # http://geoff.greer.fm/lscolors/
+    if [ "$OS" == 'osx' ]; then
+
+        LSCOLORS=''
+
+        LSCOLORS+='Dx' # Directory
+        LSCOLORS+='Gx' # Symbolic link
+        LSCOLORS+='ex' # Socket
+        LSCOLORS+='dx' # Pipe
+        LSCOLORS+='Cx' # Executable
+        LSCOLORS+='eg' # Block special
+        LSCOLORS+='ed' # Character special
+        LSCOLORS+='ab' # Executable with setuid bit set
+        LSCOLORS+='ag' # Executable with setgid bit set
+        LSCOLORS+='ac' # Directory writable to others, with sticky bit
+        LSCOLORS+='ad' # Directory writable to others, without sticky bit
+
+        export LSCOLORS
+
+    # ------------------------------------------------------------------
+    # | GNU                                                            |
+    # ------------------------------------------------------------------
+
+    #  - `ls` displays colors if the `--color` option is passed
+    #
+    #  - the actual colors are configured through the `LS_COLORS`
+    #    environment variable (built-in defaults are used if this
+    #    variable is not set)
+
+    elif [ "$OS" == 'ubuntu' ]; then
+
+        # Happy with the default colours, just changing the directory colour to yellow because of the dark background
+        LS_COLORS=$LS_COLORS:'di=1;33:';
+        export LS_COLORS
+
+    fi
+}
+
+# Get git branch details
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# Get current working directory and its parent
+function PWD {
+    tmp=${PWD%/*/*};
+    [ ${#tmp} -gt 0 -a "$tmp" != "$PWD" ] && echo ${PWD:${#tmp}+1} || echo $PWD;
+}
+
+set_prompts() {
+
+    # Useful: https://www.kirsle.net/wizards/ps1.html
+
+    if [ "$OS" == "Linux" ]; then
+
+        whoami=`whoami`
+        if [ -e "~/.dns" ]; then
+            DNS=`cat ~/.dns`
+            #PS1="\u@$DNS [\w]# "
+            PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w][\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+        else
+            if [ -e "/var/cpanel/users/$whoami" ]; then
+                eval `grep DNS= /var/cpanel/users/$whoami`
+
+                if [ ! "$DNS" = "" ]; then
+                    echo -n "$DNS" > ~/.dns
+                    #PS1="\u@$DNS [\w]# "
+                    PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+                fi
+            fi
+        fi
+
+    else
+
+        #export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+        #export PS1="[\033[90m\]\u@\h \$(PWD)\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+        export PS1="\[\033[90m\]\u@\h\[\033[00m\] \$(PWD)\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+
+    fi
+
+}
+
+main() {
+    enable_color_support
+    set_ls_colors
+    set_prompts
+}
+
+main
+
+unset -f enable_color_support
+unset -f set_ls_colors
+unset -f main

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Clear console on exit
+# From: https://github.com/alrra/dotfiles/blob/master/shell/bash_logout
+[ "$SHLVL" == 1 ] \
+    && command -v 'clear' &> /dev/null  \
+    && clear

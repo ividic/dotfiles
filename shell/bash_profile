@@ -1,0 +1,45 @@
+#!/bin/bash
+
+# Bash profile bootstrap inspired by
+# https://github.com/alrra/dotfiles/blob/master/shell/bash_profile
+
+source "$(dirname $(readlink $BASH_SOURCE))/utils/utils.sh"
+
+# bring in system bashrc
+if [ -r /etc/bashrc ]; then
+    . /etc/bashrc
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+
+source_bash_files() {
+
+    local file=''
+    local i=''
+
+    declare -r -a FILES_TO_SOURCE=(
+        'bash_aliases'
+        'bash_exports'
+        'bash_functions'
+        'bash_options'
+        'bash_prompt'
+        'bash.local'  # for local settings that should
+                      # not be under version control
+    )
+
+    for i in ${!FILES_TO_SOURCE[*]}; do
+        file="$HOME/.${FILES_TO_SOURCE[$i]}"
+        [ -r "$file" ] && source "$file"
+    done
+
+}
+
+# Execute
+source_bash_files
+
+# Cleanup
+unset -f source_bash_files

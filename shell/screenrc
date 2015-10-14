@@ -1,0 +1,15 @@
+# Screen settings
+# https://www.gnu.org/software/screen/manual/screen.html#Command-Summary
+# Inspiration: https://github.com/alrra/dotfiles/blob/master/shell/screenrc
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Set the default character encoding to UTF-8
+defutf8 on
+
+# Disable the startup message
+startup_message off
+
+# Increase the maximum number of lines contained
+# in the scrollback buffer (defaults to 100)
+defscrollback 32000

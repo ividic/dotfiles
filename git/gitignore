@@ -1,0 +1,74 @@
+# Useful `.gitignore` templates:
+# https://github.com/github/gitignore
+# Inspired by: https://github.com/alrra/dotfiles/blob/master/git/gitignore
+
+
+# ----------------------------------------------------------------------
+# | Linux                                                              |
+# ----------------------------------------------------------------------
+
+*~
+
+
+# ----------------------------------------------------------------------
+# | Miscellaneous                                                      |
+# ----------------------------------------------------------------------
+
+# npm log file
+# https://docs.npmjs.com/misc/config#loglevel
+npm-debug.log
+
+# ignore all .local files
+# eg, git credential file or bash.local
+#/git/gitconfig.local
+*.local
+
+
+# original files
+/_originals
+
+
+# Project files
+*.sublime-project
+*.sublime-workspace
+
+# Compiled Python files
+*.pyc
+
+
+# ----------------------------------------------------------------------
+# | OS X                                                               |
+# ----------------------------------------------------------------------
+
+._*
+.AppleDouble
+.DS_Store
+.localized
+.LSOverride
+.Spotlight-V100
+.Trashes
+Icon
+
+
+# ----------------------------------------------------------------------
+# | Vim                                                                |
+# ----------------------------------------------------------------------
+
+%*
+*.sw[a-z]
+*.un~
+.netrwhist
+Session.vim
+.vim/viminfo
+.vim/swaps/*
+.vim/undo
+
+
+# ----------------------------------------------------------------------
+# | Windows                                                            |
+# ----------------------------------------------------------------------
+
+Desktop.ini
+ehthumbs.db
+Thumbs.db
+

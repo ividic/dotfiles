@@ -1,0 +1,135 @@
+#!/bin/bash
+
+# Inspiration from all in README.md
+
+source "$(dirname $(readlink $BASH_SOURCE))/utils/utils.sh"
+
+
+# Common commands (but shorter!)
+# ---------------------------
+
+alias clear-history='history -c && > ~/.bash_history'
+alias l='ls -1'
+alias ll='ls -laF'
+alias lsd='ls -l | grep "^d"'   # List only directories
+alias rm='rm -i'                # Safety first
+alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'   # Stopwatch
+
+
+# ---------------------------
+
+alias g='git'
+alias gs='git status'
+alias gd='git diff'
+
+
+# ---------------------------
+
+if [ "$OS" == 'osx' ]; then
+
+    alias brwe='brew' # typos
+    alias flush='dscacheutil -flushcache'
+    alias flushdns='flush' # because I'm forgetful
+    alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+    command -v md5sum > /dev/null || alias md5sum="md5"         # OS X has no `md5sum`, so use `md5` as a fallback
+    command -v sha1sum > /dev/null || alias sha1sum="shasum"    # OS X has no `sha1sum`, so use `shasum` as a fallback
+    alias o='open'
+    alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+
+    # Empty the trash, the main HDD and on all mounted volumes
+    # and clear Apple’s system logs to improve shell startup speed
+    alias empty-trash='sudo rm -frv /Volumes/*/.Trashes \
+                        && sudo rm -frv ~/.Trash \
+                        && sudo rm -frv /private/var/log/asl/*.asl'
+
+     # Hide/Show desktop icons
+    alias hide-desktop-icons='defaults write com.apple.finder CreateDesktop -bool false && killall Finder'
+    alias show-desktop-icons='defaults write com.apple.finder CreateDesktop -bool true && killall Finder'
+
+    # Hide/Show hidden files in Finder
+    alias hide-hidden-files='defaults write com.apple.finder AppleShowAllFiles -bool false && killall Finder'
+    alias show-hidden-files='defaults write com.apple.finder AppleShowAllFiles -bool true && killall Finder'
+
+    # Merge PDF files
+    # Usage: `mergepdf -o output.pdf input{1,2,3}.pdf`
+    alias mergepdf='/System/Library/Automator/Combine\ PDF\ Pages.action/Contents/Resources/join.py'
+
+fi
+
+
+# ---------------------------
+
+if [ "$OS" == 'osx' ]; then
+    alias cc='pbcopy'
+elif [ "$OS" == 'ubuntu' ]; then
+    alias cc='xclip -selection clip'
+fi
+
+
+# Navigation
+# ---------------------------
+
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ~="cd ~" # `cd` is probably faster to type though
+alias -- -="cd -"
+
+
+# Network
+# ---------------------------
+
+alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
+
+# ---------------------------
+
+if [ "$OS" == 'osx' ]; then
+    alias local-ip='ipconfig getifaddr en1'
+elif [ "$OS" == 'ubuntu' ] || [ "$OS" == "Linux" ]; then
+    alias local-ip="ifconfig | \
+                    | grep 'inet addr' \
+                    | grep -v '127.0.0.1' \
+                    | cut -d: -f2 \
+                    | cut -d' ' -f1"
+fi
+
+
+# Package Managers
+# ---------------------------
+
+# OS specific package managers
+
+if [ "$OS" == 'osx' ]; then
+
+    # Homebrew
+    if command -v 'brew' &> /dev/null; then
+        alias brewd='brew doctor'
+        alias brewi='brew install'
+        alias brewr='brew uninstall'
+        alias brews='brew search'
+        alias brewu='brew update \
+                      && brew upgrade --all \
+                      && brew cleanup \
+                      && brew cask cleanup'
+    fi
+
+elif [ "$OS" == 'ubuntu' ]; then
+
+    # Advanced Packaging Tool
+    alias apti='sudo apt-get install'
+    alias aptr='sudo apt-get remove'
+    alias apts='sudo apt-cache search'
+    alias aptu='sudo apt-get update \
+                 && sudo apt-get upgrade'
+    alias aptdu='sudo apt-get update \
+                 && sudo apt-get dist-upgrade'
+
+fi
+
+
+# Clean
+# ---------------------------
+
+unset OS
