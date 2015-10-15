@@ -4,6 +4,7 @@
 
 source "$(dirname $(readlink $BASH_SOURCE))/utils/utils.sh"
 
+declare OS="$(get_os)"
 
 # Common commands (but shorter!)
 # ---------------------------
@@ -21,6 +22,7 @@ alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date
 alias g='git'
 alias gs='git status'
 alias gd='git diff'
+# ADD: Git push origin <current_branch>
 
 
 # ---------------------------
@@ -30,7 +32,7 @@ if [ "$OS" == 'osx' ]; then
     alias brwe='brew' # typos
     alias flush='dscacheutil -flushcache'
     alias flushdns='flush' # because I'm forgetful
-    alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+    alias afk='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
     command -v md5sum > /dev/null || alias md5sum="md5"         # OS X has no `md5sum`, so use `md5` as a fallback
     command -v sha1sum > /dev/null || alias sha1sum="shasum"    # OS X has no `sha1sum`, so use `shasum` as a fallback
     alias o='open'
@@ -86,9 +88,9 @@ alias ip='dig +short myip.opendns.com @resolver1.opendns.com'
 # ---------------------------
 
 if [ "$OS" == 'osx' ]; then
-    alias local-ip='ipconfig getifaddr en1'
+    alias localip='ipconfig getifaddr en1'
 elif [ "$OS" == 'ubuntu' ] || [ "$OS" == "Linux" ]; then
-    alias local-ip="ifconfig | \
+    alias localip="ifconfig | \
                     | grep 'inet addr' \
                     | grep -v '127.0.0.1' \
                     | cut -d: -f2 \

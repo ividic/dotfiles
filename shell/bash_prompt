@@ -66,7 +66,7 @@ set_ls_colors() {
     #    environment variable (built-in defaults are used if this
     #    variable is not set)
 
-    elif [ "$OS" == 'ubuntu' ]; then
+    elif [ "$OS" == 'ubuntu' ] || [ "$OS" == 'Linux' ]; then
 
         # Happy with the default colours, just changing the directory colour to yellow because of the dark background
         LS_COLORS=$LS_COLORS:'di=1;33:';
