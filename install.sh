@@ -6,11 +6,6 @@
 #
 # Bash conditional statements: http://tldp.org/LDP/Bash-Beginners-Guide/html/sect_07_01.html
 #
-# 1. Include utils
-# 2.
-# 3. Set $PATH in bash_profile
-# 4. Set chmod +x in shell/bin
-#
 
 cd "$(dirname "$BASH_SOURCE")" \
 	&& source 'shell/utils/utils.sh'
