@@ -48,7 +48,7 @@
 
 
 [push]
-	default = simple
+	default = current
 
 
 [difftool "sourcetree"]
