@@ -50,6 +50,11 @@ if [ "$OS" == 'osx' ]; then
     unset MAILCHECK
     shopt -u mailwarn
 
+else
+
+    # Set UMASK to prevent Linux server from generating files as -rw-rw-r--
+    umask 0022
+
 fi
 
 unset OS
