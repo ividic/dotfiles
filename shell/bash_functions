@@ -129,6 +129,17 @@ qt() {
 }
 
 
+# WH
+# ---------------------------
+
+# Perform a Whois and Host lookup on a domain
+
+wh() {
+    whois $1
+    host $1
+}
+
+
 # Misc
 # ---------------------------
 
