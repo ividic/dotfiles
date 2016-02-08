@@ -2,7 +2,12 @@
   excludesfile = ~/.gitignore_global
   attributesfile = ~/.gitattributes
 
+  # Set whitespace
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+
+  # Set the default editor to Sublime Text - need to alias it to work:
+  # http://www.sublimetext.com/docs/3/osx_command_line.html
+  editor = subl -n -w
 
   # insanely beautiful diffs @paulirish
   # pager = bash -lc 'diff-highlight | diff-so-fancy | less -r' -
@@ -53,7 +58,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
