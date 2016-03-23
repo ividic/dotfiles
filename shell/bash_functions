@@ -137,6 +137,7 @@ qt() {
 wh() {
     whois $1
     host $1
+    host mail.$1
 }
 
 
