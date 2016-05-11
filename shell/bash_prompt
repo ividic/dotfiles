@@ -90,13 +90,20 @@ set_prompts() {
 
     # Useful: https://www.kirsle.net/wizards/ps1.html
 
+    BRANCH=$(parse_git_branch)
+    if [ "$BRANCH" == " (master)" ]; then
+        BRANCH_COLOR="\033[32m\]"
+    else
+        BRANCH_COLOR="\033[33m\]"
+    fi
+
     if [ "$OS" == "Linux" ]; then
 
         whoami=`whoami`
         if [ -e "~/.dns" ]; then
             DNS=`cat ~/.dns`
             #PS1="\u@$DNS [\w]# "
-            PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w][\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+            PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
         else
             if [ -e "/var/cpanel/users/$whoami" ]; then
                 eval `grep DNS= /var/cpanel/users/$whoami`
@@ -104,7 +111,7 @@ set_prompts() {
                 if [ ! "$DNS" = "" ]; then
                     echo -n "$DNS" > ~/.dns
                     #PS1="\u@$DNS [\w]# "
-                    PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+                    PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
                 fi
             fi
         fi
@@ -113,7 +120,7 @@ set_prompts() {
 
         #export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
         #export PS1="[\033[90m\]\u@\h \$(PWD)\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
-        export PS1="\[\033[90m\]\u@\h\[\033[00m\] \$(PWD)\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
+        export PS1="\[\033[90m\]\u@\h\[\033[00m\] \$(PWD)${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
 
     fi
 
