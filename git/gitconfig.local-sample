@@ -1,0 +1,8 @@
+[user]
+  name = My Name
+  email = my@email.address
+
+[core]
+  # Set the default editor to Sublime Text - need to alias it to work:
+  # http://www.sublimetext.com/docs/3/osx_command_line.html
+  editor = subl -n -w

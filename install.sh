@@ -8,7 +8,7 @@
 #
 
 cd "$(dirname "$BASH_SOURCE")" \
-	&& source 'shell/utils/utils.sh'
+    && source 'shell/utils/utils.sh'
 
 #declare dotfilesDirectory="$HOME/Work/projects/_dotfiles"
 declare dotfilesDirectory="$(pwd)"
@@ -46,6 +46,22 @@ check_git_local() {
         echo "[user]" > $gitconfig_local_file
         echo "  name = $git_name" >> $gitconfig_local_file
         echo "  email = $git_email" >> $gitconfig_local_file
+
+        ask_for_confirmation "Would you like to set Sublime Text as your Git editor?"
+        if answer_is_yes; then
+
+            # Display symlink warning
+            print_info " Make sure you symlink 'subl' into /usr/local/bin directory, else you will get errors\n  http://www.sublimetext.com/docs/3/osx_command_line.html\n\n  eg:\n  cd /usr/local/bin\n  ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+
+            # Print to config file
+            echo "" >> $gitconfig_local_file
+            echo "[core]" >> $gitconfig_local_file
+            echo "  # Set the default editor to Sublime Text - need to alias it to work:" >> $gitconfig_local_file
+            echo "  # http://www.sublimetext.com/docs/3/osx_command_line.html" >> $gitconfig_local_file
+            echo "  editor = subl -n -w" >> $gitconfig_local_file
+
+        fi
+
     else
         print_success "Using existing $gitconfig_local_file"
     fi
