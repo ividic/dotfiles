@@ -147,3 +147,116 @@ wh() {
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 # From: https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+
+# Create a Self-Signed SSL Certificate for a local dev domain
+#
+# Make sure SSL is enabled in Apache config (httpd.conf)
+# Also make sure the reference to httpd-ssl.conf in httpd.conf is un-commented
+function create-ssl-cert() {
+
+    # Check that we're not in the wwwroot folder
+    if [ ${PWD##*/} = "wwwroot" ]; then
+
+        print_error "Run this command from the project folder, not wwwroot"
+        return 1
+
+    fi
+
+    ask_for_confirmation "Create SSL Certificate for ${PWD}?"
+    if answer_is_yes; then
+
+        # Set up SSL config
+        cat > openssl.cnf <<-EOF
+[req]
+distinguished_name = req_distinguished_name
+x509_extensions = v3_req
+prompt = no
+[req_distinguished_name]
+CN = ${PWD##*/}.dev
+[v3_req]
+keyUsage = keyEncipherment, dataEncipherment
+extendedKeyUsage = serverAuth
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = *.${PWD##*/}.dev
+DNS.2 = ${PWD##*/}.dev
+EOF
+
+        # Generate Certificate
+        openssl req \
+            -new \
+            -newkey rsa:2048 \
+            -sha1 \
+            -days 3650 \
+            -nodes \
+            -x509 \
+            -keyout ssl.key \
+            -out ssl.crt \
+            -config openssl.cnf
+
+        # Delete config
+        rm -f openssl.cnf
+
+
+        # Set up the Virtual Host
+        ask_for_confirmation "Add Apache vhost entry and restart Apache?"
+
+        if answer_is_yes; then
+
+            # Make sure the current user owns the log files
+            touch access_log
+            touch error_log
+
+            cat << EOF | sudo tee -a /private/etc/apache2/extra/httpd-ssl.conf
+
+<VirtualHost ${PWD##*/}.dev:443>
+    #   General setup for the virtual host
+    VirtualDocumentRoot "${PWD}/wwwroot"
+    ServerName ${PWD##*/}.dev
+    ServerAlias *.${PWD##*/}.dev
+    UseCanonicalName Off
+    ErrorLog "${PWD}/error_log"
+    CustomLog "${PWD}/access_log" common
+
+    #   SSL Engine Switch:
+    #   Enable/Disable SSL for this virtual host.
+    SSLEngine on
+    SSLCipherSuite ALL:!ADH:!EXPORT56:RC4+RSA:+HIGH:+MEDIUM:+LOW:+SSLv2:+EXP:+eNULL
+
+    #   Site Certificate:
+    SSLCertificateFile "${PWD}/ssl.crt"
+
+    #   Site Private Key:
+    SSLCertificateKeyFile "${PWD}/ssl.key"
+</VirtualHost>
+EOF
+
+
+            # Restart Apache
+            print_info "Testing Apache Config and Restarting Apache"
+            sudo apachectl configtest
+            sudo apachectl restart
+
+        fi
+
+
+        # Add SSL Certificate to Keychain Access
+        # This will bypass the browser CA error notification
+        ask_for_confirmation "Add Certificate to Keychain Access?"
+
+        if answer_is_yes; then
+
+            sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ssl.crt
+
+        fi
+
+        print_success "Done."
+
+    else
+
+        print_error "Exiting..."
+
+    fi
+
+}
