@@ -12,6 +12,19 @@
 4. Customise ~/bash.local as needed
 
 
+## Re-Install
+To re-install the new Git editor config, need to delete the `./git/gitconfig.local` file and run the installer `./install.sh`
+
+
+### Additional Info
+For the machines to use Sublime as the Git editor (probably only local machines, not servers), you'll need to symlink `subl` into `/usr/local/bin/` via
+
+```
+cd /usr/local/bin
+ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
+```
+
+
 ## Editing
 
 

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Directories
+# ---------------------------
+
+DIR=~/Work
+alias h='cd ~/'
+alias w='cd ${DIR}/sites/'
+alias db='cd ~/Dropbox'
+alias dl='cd ~/Downloads'
+alias dt='cd ~/Desktop'
+
+PATH="$PATH:$HOME/.composer/vendor/bin"
+PATH="/usr/local/php5/bin:$PATH"
+export PATH
