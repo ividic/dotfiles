@@ -242,6 +242,7 @@ EOF
 
 
         # Add SSL Certificate to Keychain Access
+        # This will bypass the browser CA error notification
         ask_for_confirmation "Add Certificate to Keychain Access?"
 
         if answer_is_yes; then
