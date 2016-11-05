@@ -87,6 +87,7 @@ declare -a FILES_TO_SYMLINK=(
 
     'shell/bashrc'
     'shell/curlrc'
+    'shell/eslintrc'
     'shell/inputrc'
     'shell/screenrc'
 
