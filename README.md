@@ -1,19 +1,21 @@
 # DOTFILES
 
 ## Introduction
-
+These are my personal dotfiles, [inspired by some awesome people](#inspiration) - use at your own risk.
 
 ## Installation
-1. Fork this repository
-2. Clone to your machine
-3. Run install.sh
-    1. It will prompt you for the basic Git info, unless specified
-    2. Custom Git info should be saved in ~/.gitconfig.local
-4. Customise ~/bash.local as needed
+1. Fork this repository, review and remove any unwanted parts.
+1. Clone to your machine, for example into `~/dotfiles`
+1. Run `./install.sh`
+    1. It will prompt you for the basic Git info, unless specified previously
+    1. To modify this information, edit `~/.gitconfig.local`
+1. Customise `~/.bash.local` (`shell/bash.local`) for your personal preferences - sample file can be found in `shell/bash.local-sample`
 
 
 ## Re-Install
-To re-install the new Git editor config, need to delete the `./git/gitconfig.local` file and run the installer `./install.sh`
+To re-install simply run `./install.sh` again.
+
+To re-install and update the Git editor config, you will need to delete the `git/gitconfig.local` file and run the installer `./install.sh`
 
 
 ### Additional Info
@@ -27,27 +29,6 @@ ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
 
 ## Editing
 
-
-
-### TODO:
-1. OSX defaults
-2. Backup - see below
-
-
-### TODO: git
-
-1. pretty diff (@paulirish) + uncomment in gitconfig
-
-
-### TODO: shell
-
-
-### TODO: Aliases/Functions
-
-1. z - github.com/rupa/z
-2. Software updates ala https://github.com/alrra/dotfiles/blob/master/shell/bash_aliases or https://github.com/mathiasbynens/dotfiles/blob/master/.aliases
-
-
 ### Syntax highlighting for these files
 
 If you edit this stuff, install [Dotfiles Syntax Highlighting](https://github.com/mattbanks/dotfiles-syntax-highlighting-st2) via [Package Control](http://wbond.net/sublime_packages/package_control)
@@ -56,12 +37,12 @@ If you edit this stuff, install [Dotfiles Syntax Highlighting](https://github.co
 ## Inspiration
 
 https://github.com/paulirish/dotfiles
+
 https://github.com/mathiasbynens/dotfiles/
+
 https://github.com/alrra/dotfiles/
+
 https://github.com/necolas/dotfiles
+
 https://github.com/holman/dotfiles
 
-
-## Interesting
-
-http://nicolasgallagher.com/mac-osx-bootable-backup-drive-with-rsync/
