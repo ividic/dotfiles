@@ -9,6 +9,8 @@ These are my personal dotfiles, [inspired by some awesome people](#inspiration) 
 1. Run `./install.sh`
     1. It will prompt you for the basic Git info, unless specified previously
     1. To modify this information, edit `~/.gitconfig.local`
+
+    1. You will be prompted to back up any existing dotfiles that will be overwritten. ⚠️ I highly recommend you do this the first time you run the installer to back up the system default dotfiles, otherwise you'll have a hard time reverting back to defaults ⚠️
 1. Customise `~/.bash.local` (`shell/bash.local`) for your personal preferences - sample file can be found in `shell/bash.local-sample`
 
 
@@ -31,7 +33,7 @@ ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl
 
 ### Syntax highlighting for these files
 
-If you edit this stuff, install [Dotfiles Syntax Highlighting](https://github.com/mattbanks/dotfiles-syntax-highlighting-st2) via [Package Control](http://wbond.net/sublime_packages/package_control)
+If you edit this stuff, install [Dotfiles Syntax Highlighting](https://github.com/mattbanks/dotfiles-syntax-highlighting-st2) via [Package Control](https://packagecontrol.io)
 
 
 ## Inspiration

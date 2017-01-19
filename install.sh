@@ -104,11 +104,11 @@ main() {
     local sourceFile=""
     local targetFile=""
     local backupDir="$HOME/.backup_originals"
-    local skipOriginalsCheck="$HOME/.skiporiginalscheck"
+    local skipOriginalsCheck="$HOME/.dotfiles-skiporiginalscheck"
 
 
     # Shall we back up the original files?
-    ask_for_confirmation "Backup current config files?"
+    ask_for_confirmation "Back up current config files?"
     if answer_is_yes; then
 
         if [ -e $backupDir ]; then
