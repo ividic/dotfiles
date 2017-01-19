@@ -40,6 +40,9 @@ if [ "$OS" == 'osx' ]; then
     alias o='open'
     alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 
+    # Get OS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
+    alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
+
     # Empty the trash, the main HDD and on all mounted volumes
     # and clear Apple’s system logs to improve shell startup speed
     alias empty-trash='sudo rm -frv /Volumes/*/.Trashes \
