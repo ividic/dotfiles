@@ -485,7 +485,7 @@ execute "defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool
          defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true" \
    "Avoid creating '.DS_Store' files on network or USB volumes"
 
-execute "defaults read com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm'" \
+execute "defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm'" \
     "Setting the clock to 24-hour format in the menu bar"
 
 # execute "defaults write com.apple.menuextra.battery ShowPercent -string 'NO'" \
