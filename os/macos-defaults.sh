@@ -142,9 +142,9 @@ execute "defaults write com.apple.finder FXEnableExtensionChangeWarning -bool fa
 execute "defaults write com.apple.finder FXPreferredViewStyle -string 'clmv'" \
     "Use column view in all Finder windows by default" # Other modes: `icnv`, `Nlsv`, `Flwv`
 
-execute "defaults write com.apple.finder NewWindowTarget -string 'PfDe' && \
-         defaults write com.apple.finder NewWindowTargetPath -string 'file://$HOME/Desktop/'" \
-    "Set 'Desktop' as the default location for new Finder windows"
+execute "defaults write com.apple.finder NewWindowTarget -string 'PfLo' && \
+         defaults write com.apple.finder NewWindowTargetPath -string 'file://$HOME/Downloads/'" \
+    "Set 'Downloads' as the default location for new Finder windows"
 
 execute "defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true && \
          defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false && \
@@ -503,6 +503,7 @@ execute "defaults write com.apple.print.PrintingPrefs 'Quit When Finished' -bool
 # execute "defaults write com.apple.screencapture disable-shadow -bool true" \
 #     "Disable shadow in screenshots"
 
+mkd '$HOME/Desktop/Screenshots' # Create the Screenshots folder
 execute "defaults write com.apple.screencapture location -string '$HOME/Desktop/Screenshots'" \
     "Save screenshots to the Desktop Screenshots folder"
 
@@ -569,8 +570,8 @@ execute "for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; 
 # execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark" \
 #     "Enable the Dark theme for the menu bar"
 
-execute "launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null" \
-    "Disable Notification Center and remove the menu bar icon"
+# execute "launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null" \
+#     "Disable Notification Center and remove the menu bar icon"
 
 execute "sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true" \
     "Enable HiDPI display modes (requires restart)"

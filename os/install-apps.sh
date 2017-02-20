@@ -23,7 +23,6 @@ brew cask install dropbox
 brew cask install evernote
 brew cask install filezilla
 brew cask install firefox
-brew cask install fontforge
 brew cask install gas-mask
 brew cask install google-chrome
 brew cask install google-chrome-canary
@@ -37,4 +36,8 @@ brew cask install skype
 brew cask install slack
 brew cask install virtualbox
 brew cask install vlc
+
+# The following need to be sequential
+
 brew cask install xquartz
+brew cask install fontforge
