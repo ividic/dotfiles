@@ -91,6 +91,8 @@ set_prompts() {
     # Useful: https://www.kirsle.net/wizards/ps1.html
     # tput colors: http://unix.stackexchange.com/questions/269077/tput-setaf-color-table-how-to-determine-color-codes
 
+    declare OS="$(get_os)"
+
     BRANCH=$(parse_git_branch)
     if [ "$BRANCH" == " (master)" ]; then
         BRANCH_COLOR="\[$(tput setaf 2)\]"
@@ -105,7 +107,7 @@ set_prompts() {
             DNS=`cat ~/.dns`
             #PS1="\u@$DNS [\w]# "
             #PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
-            PS1="\[$(tput setaf 8)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
+            PS1="\[$(tput setaf 94)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
         else
             if [ -e "/var/cpanel/users/$whoami" ]; then
                 eval `grep DNS= /var/cpanel/users/$whoami`
@@ -114,7 +116,7 @@ set_prompts() {
                     echo -n "$DNS" > ~/.dns
                     #PS1="\u@$DNS [\w]# "
                     #PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
-                    PS1="\[$(tput setaf 8)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
+                    PS1="\[$(tput setaf 94)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
                 fi
             fi
         fi
