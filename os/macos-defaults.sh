@@ -28,11 +28,16 @@ sudo nvram SystemAudioVolume=" "
 
 print_in_purple "\n   Computer Name\n\n"
 
-# execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string 'Laptop' && \
-#          sudo scutil --set ComputerName 'laptop' && \
-#          sudo scutil --set HostName 'laptop' && \
-#          sudo scutil --set LocalHostName 'laptop'" \
-#     "Set computer name"
+ask_for_confirmation "Change computer name?"
+if answer_is_yes; then
+    ask "What would you like it to be? "
+    computer_name="$(get_answer)"
+    execute "sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string '$computer_name' && \
+             sudo scutil --set ComputerName '$computer_name' && \
+             sudo scutil --set HostName '$computer_name' && \
+             sudo scutil --set LocalHostName '$computer_name'" \
+        "Set computer name"
+fi
 
 
 # ---------------------------
