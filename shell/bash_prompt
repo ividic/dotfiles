@@ -89,12 +89,13 @@ function PWD {
 set_prompts() {
 
     # Useful: https://www.kirsle.net/wizards/ps1.html
+    # tput colors: http://unix.stackexchange.com/questions/269077/tput-setaf-color-table-how-to-determine-color-codes
 
     BRANCH=$(parse_git_branch)
     if [ "$BRANCH" == " (master)" ]; then
-        BRANCH_COLOR="\033[32m\]"
+        BRANCH_COLOR="\[$(tput setaf 2)\]"
     else
-        BRANCH_COLOR="\033[33m\]"
+        BRANCH_COLOR="\[$(tput setaf 3)\]"
     fi
 
     if [ "$OS" == "Linux" ]; then
@@ -103,7 +104,8 @@ set_prompts() {
         if [ -e "~/.dns" ]; then
             DNS=`cat ~/.dns`
             #PS1="\u@$DNS [\w]# "
-            PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+            #PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+            PS1="\[$(tput setaf 8)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
         else
             if [ -e "/var/cpanel/users/$whoami" ]; then
                 eval `grep DNS= /var/cpanel/users/$whoami`
@@ -111,7 +113,8 @@ set_prompts() {
                 if [ ! "$DNS" = "" ]; then
                     echo -n "$DNS" > ~/.dns
                     #PS1="\u@$DNS [\w]# "
-                    PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+                    #PS1="\[\033[90m\]\u@$DNS\[\033[00m\] [\w]${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+                    PS1="\[$(tput setaf 8)\]\u@$DNS \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
                 fi
             fi
         fi
@@ -120,7 +123,8 @@ set_prompts() {
 
         #export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
         #export PS1="[\033[90m\]\u@\h \$(PWD)\[\033[32m\]\$(parse_git_branch)\[\033[00m\]$ "
-        export PS1="\[\033[90m\]\u@\h\[\033[00m\] \$(PWD)${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+        #export PS1="\[\033[90m\]\u@\h\[\033[00m\] \$(PWD)${BRANCH_COLOR}\${BRANCH}\[\033[00m\]$ "
+        export PS1="\[$(tput setaf 8)\]\u@\h \[$(tput setaf 7)\]\$(PWD)${BRANCH_COLOR}\${BRANCH}\[$(tput sgr0)\]\\$ "
 
     fi
 
