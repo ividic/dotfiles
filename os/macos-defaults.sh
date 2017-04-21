@@ -433,6 +433,10 @@ execute "defaults write com.apple.terminal SecureKeyboardEntry -bool true" \
 execute "defaults write com.apple.terminal StringEncodings -array 4" \
     "Only use UTF-8"
 
+execute "defaults write com.apple.terminal 'Default Window Settings' -string 'Pro' && \
+         defaults write com.apple.terminal 'Startup Window Settings' -string 'Pro'" \
+    "Set Pro as the default theme"
+
 
 # ---------------------------
 
