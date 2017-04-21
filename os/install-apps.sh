@@ -28,6 +28,7 @@ brew cask install google-chrome
 brew cask install google-chrome-canary
 brew cask install imagealpha
 brew cask install imageoptim
+brew cask install kap
 brew cask install LICEcap
 brew cask install menumeters
 brew cask install sequel-pro
