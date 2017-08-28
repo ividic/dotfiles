@@ -29,6 +29,7 @@ brew cask install google-chrome-canary
 brew cask install imagealpha
 brew cask install imageoptim
 brew cask install LICEcap
+brew cask install macdown
 brew cask install menumeters
 brew cask install sequel-pro
 brew cask install sketch
