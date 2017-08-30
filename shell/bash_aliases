@@ -39,6 +39,8 @@ if [ "$OS" == 'osx' ]; then
     command -v sha1sum > /dev/null || alias sha1sum="shasum"    # OS X has no `sha1sum`, so use `shasum` as a fallback
     alias o='open'
     alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+    alias chrome="open -a 'Google Chrome'"
+    alias canary="open -a 'Google Chrome Canary'"
 
     # Get OS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
     alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
