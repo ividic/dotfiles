@@ -43,3 +43,11 @@ brew cask install vlc
 
 brew cask install xquartz
 brew cask install fontforge
+
+
+# Other useful apps
+brew install rename
+brew install ssh-copy-id
+
+# Clean up
+brew cleanup
