@@ -81,6 +81,7 @@ mkd() {
             fi
         else
             execute "mkdir -p $1" "$1"
+            cd "$1"
         fi
     fi
 }
