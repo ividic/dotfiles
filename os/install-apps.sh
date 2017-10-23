@@ -36,6 +36,7 @@ brew cask install sequel-pro
 brew cask install sketch
 brew cask install skype
 brew cask install slack
+brew cask install spectacle
 brew cask install virtualbox
 brew cask install vlc
 
