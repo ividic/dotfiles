@@ -51,5 +51,8 @@ brew cask install fontforge
 brew install rename
 brew install ssh-copy-id
 
+# cURL with http2 support
+brew install curl --with-nghttp2
+
 # Clean up
 brew cleanup
