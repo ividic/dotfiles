@@ -16,7 +16,6 @@ brew tap caskroom/versions
 # Install apps using Cask
 brew cask install android-studio
 brew cask install aptanastudio
-brew cask install camtasia
 brew cask install clipgrab
 brew cask install diffmerge
 brew cask install dropbox
@@ -32,6 +31,7 @@ brew cask install kap
 brew cask install LICEcap
 brew cask install macdown
 brew cask install menumeters
+brew cask install postman
 brew cask install sequel-pro
 brew cask install sketch
 brew cask install skype
