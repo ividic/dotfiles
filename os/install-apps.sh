@@ -36,6 +36,7 @@ brew cask install postman
 brew cask install sequel-pro
 brew cask install sketch
 brew cask install skitch
+brew cask install skyfonts
 brew cask install skype
 brew cask install slack
 brew cask install spectacle
@@ -49,6 +50,9 @@ brew cask install vlc
 brew cask install xquartz
 brew cask install fontforge
 
+# Improve QuickLook in Finder
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
+brew cask install quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
 
 # Other useful apps
 brew install rename
