@@ -61,16 +61,6 @@ function fs() {
 }
 
 
-# G
-# ---------------------------
-
-# Enable tab completion for `g` by marking it as an alias for `git`
-# From: https://github.com/mathiasbynens/dotfiles/blob/master/.bash_profile
-if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
-    complete -o default -o nospace -F _git g;
-fi;
-
-
 # GZcompare
 # ---------------------------
 
@@ -163,6 +153,14 @@ function create-ssl-cert() {
 
     fi
 
+    if [ -f "/etc/resolver/localhost" ]; then
+        TLD="localhost"
+    elif [ -f "/etc/resolver/test" ]; then
+        TLD="test"
+    else
+        TLD="dev"
+    fi
+
     ask_for_confirmation "Create SSL Certificate for ${PWD}?"
     if answer_is_yes; then
 
@@ -173,14 +171,14 @@ distinguished_name = req_distinguished_name
 x509_extensions = v3_req
 prompt = no
 [req_distinguished_name]
-CN = ${PWD##*/}.dev
+CN = ${PWD##*/}.$TLD
 [v3_req]
 keyUsage = keyEncipherment, dataEncipherment
 extendedKeyUsage = serverAuth
 subjectAltName = @alt_names
 [alt_names]
-DNS.1 = *.${PWD##*/}.dev
-DNS.2 = ${PWD##*/}.dev
+DNS.1 = *.${PWD##*/}.$TLD
+DNS.2 = ${PWD##*/}.$TLD
 EOF
 
         # Generate Certificate
@@ -208,13 +206,19 @@ EOF
             touch access_log
             touch error_log
 
-            cat << EOF | sudo tee -a /private/etc/apache2/extra/httpd-ssl.conf
+            if [ "$(which httpd)" == "$(brew --prefix)/bin/httpd" ]; then
+                FILE="$(brew --prefix)/etc/httpd/extra/httpd-ssl.conf"
+            else
+                FILE="/private/etc/apache2/extra/httpd-ssl.conf"
+            fi
 
-<VirtualHost ${PWD##*/}.dev:443>
+            cat << EOF | sudo tee -a $FILE
+
+<VirtualHost ${PWD##*/}.$TLD:443>
     #   General setup for the virtual host
     VirtualDocumentRoot "${PWD}/wwwroot"
-    ServerName ${PWD##*/}.dev
-    ServerAlias *.${PWD##*/}.dev
+    ServerName ${PWD##*/}.$TLD
+    ServerAlias *.${PWD##*/}.$TLD
     UseCanonicalName Off
     ErrorLog "${PWD}/error_log"
     CustomLog "${PWD}/access_log" common

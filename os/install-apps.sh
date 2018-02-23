@@ -32,6 +32,7 @@ brew cask install kap
 brew cask install licecap
 brew cask install macdown
 brew cask install menumeters
+brew cask install microsoft-office
 brew cask install postman
 brew cask install sequel-pro
 brew cask install sketch
@@ -57,6 +58,7 @@ brew cask install quicklook-csv betterzipql qlimagesize webpquicklook suspicious
 # Other useful apps
 brew install rename
 brew install ssh-copy-id
+brew install bash-completion
 
 # cURL with http2 support
 brew install curl --with-nghttp2
