@@ -105,6 +105,9 @@ print_in_purple "\n   Dock\n\n"
 execute "defaults write com.apple.dock mru-spaces -bool false" \
     "Do not automatically rearrange spaces based on most recent use"
 
+execute "defaults write com.apple.dock orientation -string left" \
+    "Position dock on the left of the screen"
+
 execute "defaults write com.apple.dock show-process-indicators -bool true" \
     "Show indicator lights for open applications"
 
@@ -250,11 +253,17 @@ execute "defaults write -g AppleKeyboardUIMode -int 3" \
 # execute "defaults write -g KeyRepeat -int 1" \
 #     "Set the key repeat rate to fast"
 
-execute "defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false" \
-    "Disable smart quotes"
+execute "defaults write -g NSAutomaticCapitalizationEnabled -bool false" \
+    "Disable auto-capitalisation of words"
 
 execute "defaults write -g NSAutomaticDashSubstitutionEnabled -bool false" \
     "Disable smart dashes"
+
+execute "defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false" \
+    "Disable double period to full stop substituton"
+
+execute "defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false" \
+    "Disable smart quotes"
 
 execute "defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true && \
          defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144" \
@@ -262,6 +271,9 @@ execute "defaults write com.apple.universalaccess closeViewScrollWheelToggle -bo
 
 execute "defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true" \
     "Follow the keyboard focus while zoomed in"
+
+execute "defaults write ~/Library/Preferences/com.apple.controlstrip MiniCustomized '(com.apple.system.brightness, com.apple.system.media-play-pause, com.apple.system.volume, com.apple.system.screen-lock )'" \
+    "Set default icons in the touch bar (Control Strip)"
 
 
 # ---------------------------
@@ -484,6 +496,9 @@ execute "defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Track
          defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 0" \
     "Map 'click or tap with two fingers' to the secondary click"
 
+execure "defaults write -g com.apple.trackpad.scaling 1" \
+    "Change the trackpad speed"
+
 
 # ---------------------------
 
@@ -522,6 +537,15 @@ execute "defaults write com.apple.screencapture type -string 'png'" \
 execute "defaults write com.apple.screensaver askForPassword -int 1 && \
          defaults write com.apple.screensaver askForPasswordDelay -int 60" \
     "Require password a minute after sleep or screen saver mode"
+
+execute "defaults -currentHost write com.apple.screensaver idleTime 300" \
+    "Set screen saver idle time to 5 minutes"
+
+execute "defaults -currentHost write com.apple.screensaver showClock -bool true" \
+    "Show clock on the screen saver"
+
+execute "defaults write com.apple.spaces spans-displays -bool true" \
+    "Disable displays have separate Spaces - enable windows to span across displays"
 
 execute "defaults write -g AppleFontSmoothing -int 2" \
     "Enable subpixel font rendering on non-Apple LCDs"
@@ -576,8 +600,9 @@ execute "for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; 
 # execute "defaults write com.apple.universalaccess reduceTransparency -bool true" \
 #     "Disable transparency in the menu bar and elsewhere"
 
-# execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme Dark" \
-#     "Enable the Dark theme for the menu bar"
+execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string 'Dark' &&
+         defaults write NSGlobalDomain AppleInterfaceStyle -string 'Dark'" \
+    "Enable the Dark theme for the menu bar"
 
 # execute "launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null" \
 #     "Disable Notification Center and remove the menu bar icon"
@@ -587,6 +612,25 @@ execute "sudo defaults write /Library/Preferences/com.apple.windowserver Display
 
 execute "defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true" \
     "Auto-play videos when opened with QuickTime Player"
+
+
+
+# ---------------------------
+
+
+print_in_purple "\n   Users and Security\n\n"
+
+execute "sudo defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool false" \
+    "Disable fast user switching"
+
+execute "sudo defaults write /Library/Preferences/com.apple.loginwindow GuestEnabled -bool false" \
+    "Disable the Guest user"
+
+execute "sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULLNAME -bool true" \
+    "Login window - show username and password fields rather than list of users"
+    # May not work if FileVault is enabled
+
+
 
 killall "SystemUIServer" &> /dev/null
 
