@@ -173,6 +173,14 @@ main() {
 
     done
 
+    # Hide the "You have mail." notification
+    ask_for_confirmation "Hide the \"You have mail.\" notification?"
+    if answer_is_yes; then
+
+        touch ~/.hushlogin
+
+    fi
+
 }
 
 main
