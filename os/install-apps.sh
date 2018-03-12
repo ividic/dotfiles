@@ -16,8 +16,8 @@ brew tap caskroom/versions
 # Install apps using Cask
 brew cask install android-studio
 brew cask install anki
-brew cask install aptanastudio
 brew cask install clipgrab
+brew cask install cyberduck
 brew cask install diffmerge
 brew cask install dropbox
 brew cask install evernote
