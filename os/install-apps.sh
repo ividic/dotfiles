@@ -1,5 +1,12 @@
 #!/bin/bash
 
+source '../shell/utils/utils.sh'
+
+ask_for_confirmation "Install Homebrew?"
+if answer_is_yes; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
+
 # Update brew
 brew update
 
@@ -31,7 +38,6 @@ brew cask install imageoptim
 brew cask install kap
 brew cask install licecap
 brew cask install macdown
-brew cask install menumeters
 brew cask install microsoft-office
 brew cask install postman
 brew cask install sequel-pro
@@ -65,3 +71,5 @@ brew install curl --with-nghttp2
 
 # Clean up
 brew cleanup
+
+echo "Note: Download MenuMeters manually as the cask version is for macOS <= 10.10"
