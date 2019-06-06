@@ -59,7 +59,7 @@ brew cask install fontforge
 
 # Improve QuickLook in Finder
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
-brew cask install quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package
+brew cask install quicklook-csv betterzip qlimagesize webpquicklook suspicious-package
 
 # Other useful apps
 brew install rename
