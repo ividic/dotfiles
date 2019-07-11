@@ -39,6 +39,7 @@ brew cask install kap
 brew cask install licecap
 brew cask install macdown
 brew cask install microsoft-office
+brew cask install nightowl
 brew cask install postman
 brew cask install sequel-pro
 brew cask install sketch

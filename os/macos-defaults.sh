@@ -117,6 +117,9 @@ execute "defaults write com.apple.dock showhidden -bool true" \
 execute "defaults write com.apple.dock tilesize -int 27" \
     "Set icon size"
 
+execute "defaults write com.apple.dock show-recents -bool false" \
+    "Disable recent applications in dock"
+
 execute "defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool true && \
          defaults write NSGlobalDomain AppleActionOnDoubleClick -string 'Maximize'" \
     "Maximize on Window Title double-click"
