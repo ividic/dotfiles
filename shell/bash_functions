@@ -61,6 +61,41 @@ function fs() {
 }
 
 
+# gitup
+# ---------------------------
+
+# Update repo and delete current branch after it has been merged
+
+function gitup() {
+    if [ -z "$1" ]; then
+        print_info "Usage: gitup [parent_branch]"
+        return 1;
+    else
+        local parent="$1";
+    fi;
+
+    if [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
+        local branch=$(git rev-parse --abbrev-ref HEAD);
+
+        if [ "$branch" = "master" ]; then
+            print_error "Cannot perform action on master branch, exiting...";
+            return 1;
+        fi
+    else
+        print_error "Not in a git repo, exiting...";
+        return 1;
+    fi
+
+    if [ "$parent" = "$branch" ]; then
+        print_error "Select a different parent branch, exiting...";
+        print_info "Usage: gitup [parent_branch]"
+        return 1;
+    fi
+
+    git checkout master && git pull && git branch -d "$branch"
+}
+
+
 # GZcompare
 # ---------------------------
 
