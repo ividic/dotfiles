@@ -92,7 +92,7 @@ function gitup() {
         return 1;
     fi
 
-    git checkout master && git pull && git branch -d "$branch"
+    git checkout $parent && git pull && git branch -d "$branch"
 }
 
 
