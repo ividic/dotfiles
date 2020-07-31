@@ -183,8 +183,6 @@ execute "/usr/libexec/PlistBuddy -c 'Set :DesktopViewSettings:IconViewSettings:t
          /usr/libexec/PlistBuddy -c 'Set :StandardViewSettings:IconViewSettings:textSize 12' ~/Library/Preferences/com.apple.finder.plist" \
     "Set icon label text size"
 
-# execute "/usr/libexec/PlistBuddy -c 'Set :DesktopViewSettings:IconViewSettings:labelOnBottom true' ~/Library/Preferences/com.apple.finder.plist && \
-#          /usr/libexec/PlistBuddy -c 'Set :StandardViewSettings:IconViewSettings:labelOnBottom true' ~/Library/Preferences/com.apple.finder.plist" \
 execute "/usr/libexec/PlistBuddy -c 'Set :DesktopViewSettings:IconViewSettings:labelOnBottom false' ~/Library/Preferences/com.apple.finder.plist && \
          /usr/libexec/PlistBuddy -c 'Set :StandardViewSettings:IconViewSettings:labelOnBottom false' ~/Library/Preferences/com.apple.finder.plist" \
     "Set icon label position"
@@ -537,6 +535,9 @@ execute "defaults write com.apple.screencapture location -string '$HOME/Desktop/
 execute "defaults write com.apple.screencapture type -string 'png'" \
     "Save screenshots as PNGs"
 
+execute "defaults write com.apple.screencapture show-thumbnail -bool false" \
+    "Do not show screenshot thumbnail"
+
 execute "defaults write com.apple.screensaver askForPassword -int 1 && \
          defaults write com.apple.screensaver askForPasswordDelay -int 60" \
     "Require password a minute after sleep or screen saver mode"
@@ -633,6 +634,8 @@ execute "sudo defaults write /Library/Preferences/com.apple.loginwindow SHOWFULL
     "Login window - show username and password fields rather than list of users"
     # May not work if FileVault is enabled
 
+execute "sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName" \
+    "Login window - show IP address, hostname, OS version, etc when clicking the clock"
 
 
 killall "SystemUIServer" &> /dev/null
