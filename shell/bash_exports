@@ -31,6 +31,3 @@ export MANPAGER='less -X'
 # shells instead of the default "last window closed" history
 # Call set_prompts to insert Git Branch info (and colour)
 export PROMPT_COMMAND="history -a; set_prompts; $PROMPT_COMMAND"
-
-# Always enable colored `grep` output.
-export GREP_OPTIONS='--color=auto';

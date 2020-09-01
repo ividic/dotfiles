@@ -15,6 +15,9 @@ alias ll='ls -laF'
 alias lsd='ls -l | grep "^d"'   # List only directories
 alias rm='rm -i'                # Safety first
 alias timer='echo "Timer started. Stop with Ctrl-D." && date && time cat && date'   # Stopwatch
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 
 # ---------------------------
