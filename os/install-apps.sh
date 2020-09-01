@@ -4,7 +4,7 @@ source '../shell/utils/utils.sh'
 
 ask_for_confirmation "Install Homebrew?"
 if answer_is_yes; then
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 fi
 
 # Update brew
@@ -23,6 +23,7 @@ brew tap caskroom/versions
 # Install apps using Cask
 brew cask install android-studio
 brew cask install anki
+brew cask install brave-browser
 brew cask install clipgrab
 brew cask install cyberduck
 brew cask install diffmerge
@@ -37,10 +38,12 @@ brew cask install imagealpha
 brew cask install imageoptim
 brew cask install kap
 brew cask install licecap
+brew cask install microsoft-edge
 brew cask install microsoft-office
 brew cask install nightowl
 brew cask install postman
 brew cask install rectangle
+brew cask install royal-tsx
 brew cask install sequel-pro
 brew cask install sizzy
 brew cask install sketch
@@ -68,7 +71,7 @@ brew install ssh-copy-id
 brew install bash-completion
 
 # cURL with http2 support
-brew install curl --with-nghttp2
+brew install curl
 
 # Clean up
 brew cleanup
