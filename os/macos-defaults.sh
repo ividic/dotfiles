@@ -497,7 +497,7 @@ execute "defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Track
          defaults -currentHost write -g com.apple.trackpad.trackpadCornerClickBehavior -int 0" \
     "Map 'click or tap with two fingers' to the secondary click"
 
-execure "defaults write -g com.apple.trackpad.scaling 1" \
+execute "defaults write -g com.apple.trackpad.scaling 1" \
     "Change the trackpad speed"
 
 
