@@ -58,3 +58,5 @@
 
 [credential]
 	helper = osxkeychain
+[branch]
+	autosetupmerge = true
