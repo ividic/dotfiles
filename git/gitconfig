@@ -57,6 +57,10 @@
   path = ~/.gitconfig.local
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
+
 [branch]
-	autosetupmerge = true
+  autosetupmerge = true
+
+[pull]
+  ff = only
