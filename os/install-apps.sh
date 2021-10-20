@@ -69,6 +69,8 @@ brew cask install quicklook-csv betterzip qlimagesize webpquicklook suspicious-p
 brew install rename
 brew install ssh-copy-id
 brew install bash-completion
+brew install jq
+brew install the_silver_searcher # ag
 
 # cURL with http2 support
 brew install curl
