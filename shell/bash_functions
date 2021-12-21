@@ -42,6 +42,15 @@ function f() {
 }
 
 
+# FCD
+# ---------------------------
+
+# Open current directory in Finder
+function fcd() { # short for `findercd`
+    open -a Finder ./
+}
+
+
 # FS
 # ---------------------------
 
