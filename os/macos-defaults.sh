@@ -608,6 +608,9 @@ execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterf
          defaults write NSGlobalDomain AppleInterfaceStyle -string 'Dark'" \
     "Enable the Dark theme for the menu bar"
 
+execute "defaults write NSGlobalDomain AppleReduceDesktopTinting -int 1" \
+    "Disable wallpaper tinting in windows"
+
 # execute "launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null" \
 #     "Disable Notification Center and remove the menu bar icon"
 
