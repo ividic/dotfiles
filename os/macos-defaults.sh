@@ -120,6 +120,9 @@ execute "defaults write com.apple.dock tilesize -int 27" \
 execute "defaults write com.apple.dock show-recents -bool false" \
     "Disable recent applications in dock"
 
+execute "defaults write com.apple.dock wvous-br-corner -int 0" \
+    "Disable quick note hot corner"
+
 execute "defaults write NSGlobalDomain AppleMiniaturizeOnDoubleClick -bool true && \
          defaults write NSGlobalDomain AppleActionOnDoubleClick -string 'Maximize'" \
     "Maximize on Window Title double-click"
