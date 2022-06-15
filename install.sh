@@ -173,6 +173,11 @@ main() {
 
     done
 
+    # Git completion from https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    if [ ! -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+        cp ./git/git-completion.bash /usr/local/etc/bash_completion.d/
+    fi
+
     # Hide the "You have mail." notification
     ask_for_confirmation "Hide the \"You have mail.\" notification?"
     if answer_is_yes; then
