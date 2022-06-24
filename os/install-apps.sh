@@ -21,49 +21,49 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Install apps using Cask
-brew cask install android-studio
-brew cask install anki
-brew cask install brave-browser
-brew cask install clipgrab
-brew cask install cyberduck
-brew cask install diffmerge
-brew cask install dropbox
-brew cask install evernote
-brew cask install filezilla
-brew cask install firefox
-brew cask install gas-mask
-brew cask install google-chrome
-brew cask install google-chrome-canary
-brew cask install imagealpha
-brew cask install imageoptim
-brew cask install kap
-brew cask install licecap
-brew cask install microsoft-edge
-brew cask install microsoft-office
-brew cask install nightowl
-brew cask install postman
-brew cask install rectangle
-brew cask install royal-tsx
-brew cask install sequel-pro
-brew cask install sizzy
-brew cask install sketch
-brew cask install skitch
-brew cask install skype
-brew cask install slack
-brew cask install toggl
-brew cask install unnaturalscrollwheels
-brew cask install virtualbox
-brew cask install visual-studio-code
-brew cask install vlc
+brew install --cask android-studio
+brew install --cask anki
+brew install --cask brave-browser
+brew install --cask clipgrab
+brew install --cask cyberduck
+brew install --cask diffmerge
+brew install --cask dropbox
+brew install --cask evernote
+brew install --cask filezilla
+brew install --cask firefox
+brew install --cask gas-mask
+brew install --cask google-chrome
+brew install --cask google-chrome-canary
+brew install --cask imagealpha
+brew install --cask imageoptim
+brew install --cask kap
+brew install --cask licecap
+brew install --cask microsoft-edge
+brew install --cask microsoft-office
+brew install --cask nightowl
+brew install --cask postman
+brew install --cask rectangle
+brew install --cask royal-tsx
+brew install --cask sequel-pro
+brew install --cask sizzy
+brew install --cask sketch
+brew install --cask skitch
+brew install --cask skype
+brew install --cask slack
+brew install --cask toggl
+brew install --cask unnaturalscrollwheels
+brew install --cask virtualbox
+brew install --cask visual-studio-code
+brew install --cask vlc
 
 # The following need to be sequential
 
-brew cask install xquartz
-brew cask install fontforge
+brew install --cask xquartz
+brew install --cask fontforge
 
 # Improve QuickLook in Finder
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
-brew cask install quicklook-csv betterzip qlimagesize webpquicklook suspicious-package
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
+brew install --cask quicklook-csv betterzip qlimagesize webpquicklook suspicious-package
 
 # Other useful apps
 brew install rename
