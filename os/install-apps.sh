@@ -37,6 +37,7 @@ brew install --cask google-chrome-canary
 brew install --cask imagealpha
 brew install --cask imageoptim
 brew install --cask kap
+brew install --cask karabiner-elements
 brew install --cask licecap
 brew install --cask microsoft-edge
 brew install --cask microsoft-office
