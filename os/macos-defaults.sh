@@ -551,8 +551,8 @@ execute "defaults -currentHost write com.apple.screensaver idleTime 300" \
 execute "defaults -currentHost write com.apple.screensaver showClock -bool true" \
     "Show clock on the screen saver"
 
-execute "defaults write com.apple.spaces spans-displays -bool true" \
-    "Disable displays have separate Spaces - enable windows to span across displays"
+execute "defaults write com.apple.spaces spans-displays -bool false" \
+    "Enable displays have separate Spaces - switch between Spaces on different monitors"
 
 execute "defaults write -g AppleFontSmoothing -int 2" \
     "Enable subpixel font rendering on non-Apple LCDs"
