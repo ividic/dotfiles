@@ -43,6 +43,7 @@ brew install --cask microsoft-edge
 brew install --cask microsoft-office
 brew install --cask nightowl
 brew install --cask postman
+brew install --cask raycast
 brew install --cask rectangle
 brew install --cask royal-tsx
 brew install --cask sequel-pro
