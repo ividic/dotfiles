@@ -380,6 +380,9 @@ killall "Safari" &> /dev/null
 
 print_in_purple "\n   Spotlight\n\n"
 
+# execute "/usr/libexec/PlistBuddy -c 'Set :AppleSymbolicHotKeys:64:enabled bool false' ~/Library/Preferences/com.apple.symbolichotkeys.plist" \
+#     "Disable default Spotlight keyboard shortcut"
+
 # Hide Spotlight tray-icon (and subsequent helper)
 #sudo chmod 600 /System/Library/CoreServices/Search.bundle/Contents/MacOS/Search
 # Disable Spotlight indexing for any volume that gets mounted and has not yet
