@@ -70,6 +70,42 @@ function fs() {
 }
 
 
+# GCM
+# ---------------------------
+
+# Git commit with message and default prefix
+gcm() {
+  # Get git branch name and attempt to retrieve the JIRA card id from its prefix
+  local branch_name=$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)
+  local card_id=$(echo ${branch_name} | cut -d "-" -f 1-2)
+
+  if [ -z "${branch_name}" ] ; then
+    echo "Error! Cannot read branch name"
+    exit 1
+  fi
+
+  if [ "${branch_name}" = "HEAD" ] ; then
+    # https://stackoverflow.com/a/11958481
+    # User is not on a branch
+    exit 1
+  fi
+
+  if [ "${branch_name}" = "master" ] || [ "${branch_name}" = "develop" ] ; then
+    # More care should be given to these types of branches
+    exit 1
+  fi
+
+  if [ $# -eq 0 ] ; then
+    echo "Commit message:"
+    read commit_message
+  else
+    local commit_message=$@
+  fi
+
+  git commit -m "${card_id}: ${commit_message}"
+}
+
+
 # gitup
 # ---------------------------
 
