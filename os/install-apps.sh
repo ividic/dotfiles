@@ -21,15 +21,12 @@ brew tap caskroom/cask
 brew tap caskroom/versions
 
 # Install apps using Cask
-brew install --cask android-studio
 brew install --cask anki
 brew install --cask brave-browser
 brew install --cask clipgrab
-brew install --cask cyberduck
-brew install --cask diffmerge
+brew install --cask docker
 brew install --cask dropbox
 brew install --cask evernote
-brew install --cask filezilla
 brew install --cask firefox
 brew install --cask gas-mask
 brew install --cask google-chrome
@@ -39,20 +36,16 @@ brew install --cask imageoptim
 brew install --cask kap
 brew install --cask karabiner-elements
 brew install --cask licecap
+brew install --cask menumeters
 brew install --cask microsoft-edge
 brew install --cask microsoft-office
-brew install --cask nightowl
 brew install --cask postman
 brew install --cask raycast
 brew install --cask rectangle
 brew install --cask royal-tsx
 brew install --cask sequel-pro
-brew install --cask sizzy
-brew install --cask sketch
 brew install --cask skitch
-brew install --cask skype
 brew install --cask slack
-brew install --cask toggl
 brew install --cask unnaturalscrollwheels
 brew install --cask virtualbox
 brew install --cask visual-studio-code
@@ -64,7 +57,7 @@ brew install --cask xquartz
 brew install --cask fontforge
 
 # Improve QuickLook in Finder
-brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json
 brew install --cask quicklook-csv betterzip qlimagesize webpquicklook suspicious-package
 
 # Other useful apps
@@ -80,4 +73,4 @@ brew install curl
 # Clean up
 brew cleanup
 
-echo "Note: Download MenuMeters manually as the cask version is for macOS <= 10.10"
+# echo "Note: Download MenuMeters manually as the cask version is for macOS <= 10.10"
