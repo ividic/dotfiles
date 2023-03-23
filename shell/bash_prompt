@@ -94,7 +94,7 @@ set_prompts() {
     declare OS="$(get_os)"
 
     BRANCH=$(parse_git_branch)
-    if [ "$BRANCH" == " (master)" ]; then
+    if [ "$BRANCH" == " (master)" ] || [ "$BRANCH" == " (main)" ]; then
         BRANCH_COLOR="\[$(tput setaf 2)\]"
     else
         BRANCH_COLOR="\[$(tput setaf 3)\]"
