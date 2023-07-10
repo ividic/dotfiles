@@ -66,6 +66,7 @@ brew install ssh-copy-id
 brew install bash-completion
 brew install jq
 brew install the_silver_searcher # ag
+brew install lf # list files
 
 # cURL with http2 support
 brew install curl
