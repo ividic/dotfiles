@@ -67,6 +67,7 @@ brew install bash-completion
 brew install jq
 brew install the_silver_searcher # ag
 brew install lf # list files
+brew install iperf # network performance measuring
 
 # cURL with http2 support
 brew install curl
