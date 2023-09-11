@@ -617,6 +617,12 @@ execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterf
 execute "defaults write NSGlobalDomain AppleReduceDesktopTinting -int 1" \
     "Disable wallpaper tinting in windows"
 
+execute "/usr/libexec/PlistBuddy -c 'Set :AppleSymbolicHotKeys:79:enabled bool false' ~/Library/Preferences/com.apple.symbolichotkeys.plist" \
+    "Disable default Mission Control keyboard Move left a space shortcut"
+
+execute "/usr/libexec/PlistBuddy -c 'Set :AppleSymbolicHotKeys:81:enabled bool false' ~/Library/Preferences/com.apple.symbolichotkeys.plist" \
+    "Disable default Mission Control keyboard Move right a space shortcut"
+
 # execute "launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null" \
 #     "Disable Notification Center and remove the menu bar icon"
 
