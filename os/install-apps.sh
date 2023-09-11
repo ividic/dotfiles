@@ -72,6 +72,10 @@ brew install iperf # network performance measuring
 # cURL with http2 support
 brew install curl
 
+# bun
+brew tap oven-sh/bun
+brew install bun
+
 # Clean up
 brew cleanup
 
