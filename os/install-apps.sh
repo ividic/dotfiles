@@ -43,7 +43,7 @@ brew install --cask postman
 brew install --cask raycast
 brew install --cask rectangle
 brew install --cask royal-tsx
-brew install --cask sequel-pro
+brew install --cask sequel-ace
 brew install --cask skitch
 brew install --cask slack
 brew install --cask unnaturalscrollwheels
