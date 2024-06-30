@@ -26,7 +26,6 @@ brew install --cask brave-browser
 brew install --cask clipgrab
 brew install --cask docker
 brew install --cask dropbox
-brew install --cask evernote
 brew install --cask firefox
 brew install --cask gas-mask
 brew install --cask google-chrome
@@ -40,6 +39,7 @@ brew install --cask licecap
 brew install --cask menumeters
 brew install --cask microsoft-edge
 brew install --cask microsoft-office
+brew install --cask obsidian
 brew install --cask postman
 brew install --cask raycast
 brew install --cask royal-tsx
@@ -70,5 +70,3 @@ brew install curl
 
 # Clean up
 brew cleanup
-
-# echo "Note: Download MenuMeters manually as the cask version is for macOS <= 10.10"
