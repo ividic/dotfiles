@@ -33,6 +33,7 @@ brew install --cask google-chrome
 brew install --cask google-chrome-canary
 brew install --cask imagealpha
 brew install --cask imageoptim
+brew install --cask iterm2
 brew install --cask kap
 brew install --cask karabiner-elements
 brew install --cask licecap
@@ -41,7 +42,6 @@ brew install --cask microsoft-edge
 brew install --cask microsoft-office
 brew install --cask postman
 brew install --cask raycast
-brew install --cask rectangle
 brew install --cask royal-tsx
 brew install --cask sequel-ace
 brew install --cask skitch
@@ -50,11 +50,6 @@ brew install --cask unnaturalscrollwheels
 brew install --cask virtualbox
 brew install --cask visual-studio-code
 brew install --cask vlc
-
-# The following need to be sequential
-
-brew install --cask xquartz
-brew install --cask fontforge
 
 # Improve QuickLook in Finder
 brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json
@@ -67,14 +62,11 @@ brew install bash-completion
 brew install jq
 brew install the_silver_searcher # ag
 brew install lf # list files
+brew install fd # list folder contents
 brew install iperf # network performance measuring
 
 # cURL with http2 support
 brew install curl
-
-# bun
-brew tap oven-sh/bun
-brew install bun
 
 # Clean up
 brew cleanup
