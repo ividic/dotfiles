@@ -318,6 +318,15 @@ killall "Photos" &> /dev/null
 # ---------------------------
 
 
+print_in_purple "\n   MySQL Workbench\n\n"
+
+execute "defaults write com.oracle.workbench.MySQLWorkbench NSRequiresAquaSystemAppearance -bool true" \
+    "Open MySQL Workbench in light mode"
+
+
+# ---------------------------
+
+
 print_in_purple "\n   Safari\n\n"
 
 execute "defaults write com.apple.Safari AutoOpenSafeDownloads -bool false" \
