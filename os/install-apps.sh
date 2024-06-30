@@ -13,12 +13,11 @@ brew update
 # Upgrade installed formulae
 brew upgrade
 
-
 # Install Cask
-brew tap caskroom/cask
+brew tap homebrew/cask
 
 # Install Cask Versions (alternate versions of apps)
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 
 # Install apps using Cask
 brew install --cask anki
