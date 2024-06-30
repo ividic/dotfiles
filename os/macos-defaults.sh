@@ -276,8 +276,8 @@ execute "defaults write com.apple.universalaccess closeViewScrollWheelToggle -bo
 execute "defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true" \
     "Follow the keyboard focus while zoomed in"
 
-execute "defaults write ~/Library/Preferences/com.apple.controlstrip MiniCustomized '(com.apple.system.brightness, com.apple.system.media-play-pause, com.apple.system.volume, com.apple.system.screen-lock )'" \
-    "Set default icons in the touch bar (Control Strip)"
+# execute "defaults write ~/Library/Preferences/com.apple.controlstrip MiniCustomized '(com.apple.system.brightness, com.apple.system.media-play-pause, com.apple.system.volume, com.apple.system.screen-lock )'" \
+#     "Set default icons in the touch bar (Control Strip)"
 
 
 # ---------------------------
@@ -307,21 +307,21 @@ execute "sudo systemsetup -settimezone 'Australia/Sydney' > /dev/null" \
 # ---------------------------
 
 
+print_in_purple "\n   MySQL Workbench\n\n"
+
+execute "defaults write com.oracle.workbench.MySQLWorkbench NSRequiresAquaSystemAppearance -bool true" \
+    "Open MySQL Workbench in light mode"
+
+
+# ---------------------------
+
+
 print_in_purple "\n   Photos\n\n"
 
 execute "defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool true" \
     "Prevent Photos from opening automatically when devices are plugged in"
 
 killall "Photos" &> /dev/null
-
-
-# ---------------------------
-
-
-print_in_purple "\n   MySQL Workbench\n\n"
-
-execute "defaults write com.oracle.workbench.MySQLWorkbench NSRequiresAquaSystemAppearance -bool true" \
-    "Open MySQL Workbench in light mode"
 
 
 # ---------------------------
@@ -465,6 +465,12 @@ execute "defaults write com.apple.terminal 'Default Window Settings' -string 'Pr
          defaults write com.apple.terminal 'Startup Window Settings' -string 'Pro'" \
     "Set Pro as the default theme"
 
+# Ensure the Touch ID is used when `sudo` is required.
+if ! grep -q "pam_tid.so" "/etc/pam.d/sudo"; then
+    execute "sudo sh -c 'echo \"auth sufficient pam_tid.so\" >> /etc/pam.d/sudo'" \
+        "Use Touch ID to authenticate sudo"
+fi
+
 
 # ---------------------------
 
@@ -531,8 +537,8 @@ execute "defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM 
 # execute "defaults write com.apple.menuextra.battery ShowPercent -string 'NO'" \
 #     "Hide battery percentage from the menu bar"
 
-# execute "defaults write com.apple.CrashReporter UseUNC 1" \
-#     "Make crash reports appear as notifications"
+execute "defaults write com.apple.CrashReporter UseUNC 1" \
+    "Make crash reports appear as notifications"
 
 # execute "defaults write com.apple.LaunchServices LSQuarantine -bool false" \
 #     "Disable 'Are you sure you want to open this application?' dialog"
@@ -575,8 +581,7 @@ execute "defaults write -g AppleFontSmoothing -int 2" \
 # execute "defaults write -g NSDisableAutomaticTermination -bool true" \
 #     "Disable automatic termination of inactive apps"
 
-execute "defaults write -g NSNavPanelExpandedStateForSaveMode -bool true && \
-         defaults write -g NSNavPanelExpandedStateForSaveMode2 -bool true" \
+execute "defaults write -g NSNavPanelExpandedStateForSaveMode -bool true" \
     "Expand save panel by default"
 
 execute "defaults write -g NSTableViewDefaultSizeMode -int 2" \
@@ -588,8 +593,7 @@ execute "defaults write -g NSUseAnimatedFocusRing -bool false" \
 execute "defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false" \
     "Disable resume system-wide"
 
-execute "defaults write -g PMPrintingExpandedStateForPrint -bool true && \
-         defaults write -g PMPrintingExpandedStateForPrint2 -bool true" \
+execute "defaults write -g PMPrintingExpandedStateForPrint -bool true" \
     "Expand print panel by default"
 
 execute "sudo systemsetup -setrestartfreeze on" \
@@ -648,6 +652,9 @@ execute "defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen -bool true"
 
 print_in_purple "\n   Users and Security\n\n"
 
+execute "defaults write com.apple.AdLib allowApplePersonalizedAdvertising -int 0" \
+    "Disable personalized ads"
+
 execute "sudo defaults write /Library/Preferences/.GlobalPreferences MultipleSessionEnabled -bool false" \
     "Disable fast user switching"
 
@@ -663,15 +670,6 @@ execute "sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHos
 
 
 killall "SystemUIServer" &> /dev/null
-
-
-# ---------------------------
-
-
-print_in_purple "\n   SSD\n\n"
-
-execute "sudo pmset -a sms 0" \
-    "Disable the sudden motion sensor as it's not useful for SSDs"
 
 
 # ---------------------------
