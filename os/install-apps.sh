@@ -32,6 +32,7 @@ brew install --cask licecap
 brew install --cask menumeters
 brew install --cask microsoft-edge
 brew install --cask microsoft-office
+brew install --cask mysqlworkbench
 brew install --cask obsidian
 brew install --cask postman
 brew install --cask raycast
