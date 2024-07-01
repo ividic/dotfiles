@@ -13,12 +13,6 @@ brew update
 # Upgrade installed formulae
 brew upgrade
 
-# Install Cask
-brew tap homebrew/cask
-
-# Install Cask Versions (alternate versions of apps)
-brew tap homebrew/cask-versions
-
 # Install apps using Cask
 brew install --cask anki
 brew install --cask brave-browser
