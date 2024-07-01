@@ -203,9 +203,6 @@ execute "/usr/libexec/PlistBuddy -c 'Set :DesktopViewSettings:IconViewSettings:a
 execute "defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false" \
     "Save to disk (not to iCloud) by default"
 
-execute "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user" \
-    "Remove duplicates in the 'Open With' menu"
-
 execute "defaults write com.apple.finder AppleShowAllFiles -bool true" \
     "Show hidden files by default"
 
@@ -268,13 +265,6 @@ execute "defaults write -g NSAutomaticPeriodSubstitutionEnabled -bool false" \
 
 execute "defaults write -g NSAutomaticQuoteSubstitutionEnabled -bool false" \
     "Disable smart quotes"
-
-execute "defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true && \
-         defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144" \
-    "Use scroll gesture with the Ctrl (^) modifier key to zoom"
-
-execute "defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true" \
-    "Follow the keyboard focus while zoomed in"
 
 # execute "defaults write ~/Library/Preferences/com.apple.controlstrip MiniCustomized '(com.apple.system.brightness, com.apple.system.media-play-pause, com.apple.system.volume, com.apple.system.screen-lock )'" \
 #     "Set default icons in the touch bar (Control Strip)"
@@ -619,9 +609,6 @@ execute "for domain in ~/Library/Preferences/ByHost/com.apple.systemuiserver.*; 
                 '/System/Library/CoreServices/Menu Extras/Clock.menu'
         " \
     "Hide Volume icon from the menu bar"
-
-# execute "defaults write com.apple.universalaccess reduceTransparency -bool true" \
-#     "Disable transparency in the menu bar and elsewhere"
 
 execute "sudo defaults write /Library/Preferences/.GlobalPreferences AppleInterfaceTheme -string 'Dark' &&
          defaults write NSGlobalDomain AppleInterfaceStyle -string 'Dark'" \
