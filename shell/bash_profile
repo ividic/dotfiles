@@ -21,6 +21,11 @@ if [ -d "$HOME/.rbenv" ] ; then
     eval "$(rbenv init -)"
 fi
 
+# add homebrew path, otherwise we can't use "which brew" until later
+if [ -d "/opt/homebrew/bin" ] ; then
+    PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # Add tab completion
 if which brew &> /dev/null && [ -f "$(brew --prefix)/etc/bash_completion" ]; then
 	source "$(brew --prefix)/etc/bash_completion";
@@ -28,8 +33,10 @@ elif [ -f /etc/bash_completion ]; then
 	source /etc/bash_completion;
 fi
 
-# Enable git tab comoletion
-if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+# Enable git tab completion
+if which brew &> /dev/null && [ -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]; then
+    source "$(brew --prefix)/etc/bash_completion.d/git-completion.bash"
+elif [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     source /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 

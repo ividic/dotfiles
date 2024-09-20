@@ -173,7 +173,9 @@ main() {
     done
 
     # Git completion from https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    if [ ! -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    if which brew &> /dev/null && [ ! -f "$(brew --prefix)/etc/bash_completion.d/git-completion.bash" ]; then
+        cp ./git/git-completion.bash "$(brew --prefix)/etc/bash_completion.d/"
+    elif [ -d /usr/local/etc/bash_completion.d ] && [ ! -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
         cp ./git/git-completion.bash /usr/local/etc/bash_completion.d/
     fi
 
