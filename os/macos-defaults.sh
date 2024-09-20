@@ -524,6 +524,9 @@ execute "defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool
 execute "defaults write com.apple.menuextra.clock DateFormat -string 'EEE d MMM  HH:mm'" \
     "Setting the clock to 24-hour format in the menu bar"
 
+execute "defaults write \"Apple Global Domain\" AppleICUForce24HourTime -int 1" \
+    "Setting the clock to 24-hour format (new)"
+
 # execute "defaults write com.apple.menuextra.battery ShowPercent -string 'NO'" \
 #     "Hide battery percentage from the menu bar"
 
@@ -553,8 +556,14 @@ execute "defaults write com.apple.screensaver askForPassword -int 1 && \
          defaults write com.apple.screensaver askForPasswordDelay -int 60" \
     "Require password a minute after sleep or screen saver mode"
 
-execute "defaults -currentHost write com.apple.screensaver idleTime 300" \
-    "Set screen saver idle time to 5 minutes"
+execute "defaults -currentHost write com.apple.screensaver idleTime 1800" \
+    "Set screen saver idle time to 30 minutes"
+
+execute "sudo pmset displaysleep 30" \
+    "Set display off on power adapter to 30 minutes"
+
+execute "sudo pmset -b displaysleep 20" \
+    "Set display off on battery to 20 minutes"
 
 execute "defaults -currentHost write com.apple.screensaver showClock -bool true" \
     "Show clock on the screen saver"
