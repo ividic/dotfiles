@@ -3,6 +3,13 @@
 # Inspiration: https://github.com/alrra/dotfiles/blob/master/shell/bash_exports
 # and original Ubuntu bashrc
 
+# Stop the macOS Terminal from showing a warning
+# message when Zsh is not the default shell.
+#
+# https://support.apple.com/en-us/HT208050
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Make nano the default editor
 export EDITOR='nano'
 
