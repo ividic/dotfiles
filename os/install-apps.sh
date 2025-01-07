@@ -21,6 +21,7 @@ brew install --cask docker
 brew install --cask dropbox
 brew install --cask firefox
 brew install --cask gas-mask
+brew install --cask ghostty
 brew install --cask google-chrome
 brew install --cask google-chrome-canary
 brew install --cask imagealpha
