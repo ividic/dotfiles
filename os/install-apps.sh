@@ -16,6 +16,7 @@ brew upgrade
 # Install apps using Cask
 brew install --cask anki
 brew install --cask altair-graphql-client
+brew install --cask claude-code
 brew install --cask docker
 brew install --cask dropbox
 brew install --cask gas-mask
@@ -32,6 +33,7 @@ brew install --cask postman
 brew install --cask raycast
 brew install --cask royal-tsx
 brew install --cask sequel-ace
+brew install --cask shottr
 brew install --cask slack
 brew install --cask virtualbox
 brew install --cask visual-studio-code
@@ -43,6 +45,7 @@ brew install --cask jpc-qlcolorcode qlstephen qlmarkdown quicklook-json
 brew install --cask quicklook-csv betterzip suspicious-package
 
 # Other useful apps
+brew install asimov #  Ignore node_modules folders in Time Machine backups
 brew install f2
 brew install rename
 brew install ssh-copy-id
